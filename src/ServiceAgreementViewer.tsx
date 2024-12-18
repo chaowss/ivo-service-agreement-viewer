@@ -37,7 +37,7 @@ const ServiceAgreementViewer = ({ element }: { element: JsonElement }) => {
                 // assuming that the mention does not have children
                 return (
                     <span 
-                        id={el.id}
+                        data-attribute={el.id}
                         className="mention" 
                         style={{ backgroundColor: el.color }}
                     >

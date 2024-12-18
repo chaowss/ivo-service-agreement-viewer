@@ -34,21 +34,20 @@ li {
     opacity: 0.9;
 }
 /* Reset counters at the root level */
-.document-root {
-    counter-reset: clause;
+#document-root {
+    counter-reset: clause subclause;
     font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Style for top-level clauses */
-.clause:not(.clause *) {
+/* Style for top-level clauses - update selector to catch all direct clauses */
+#document-root .clause:not(.clause .clause) {
     counter-increment: clause;
-    counter-reset: subclause;
     position: relative;
     padding-left: 2rem;
     margin: 1rem 0;
 }
 
-.clause:not(.clause *)::before {
+#document-root .clause:not(.clause .clause)::before {
     content: counter(clause) ". ";
     position: absolute;
     left: 0;
