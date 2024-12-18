@@ -9,9 +9,8 @@ A React component for rendering legal documents with hierarchical clause numberi
   - Nested clauses use alphabetical numbering (a, b, c...)
   - Maintains proper numbering regardless of nesting depth or intermediate elements
 - Dynamic mentions system
-  - Mentions are identified by their `id` attribute
-  - Updating one mention updates all instances with the same ID throughout the document
-  - Customizable colors for different mention types
+  - Mentions are identified by their data-attribute, which could be used to filter all mentions of the same id to update.
+  - CSS ids should be unique
 - Clean typography and layout
   - Helvetica-based font stack
   - Proper spacing and indentation
