@@ -1,6 +1,21 @@
-# Getting Started with Create React App
+# Service Agreement Document Viewer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React component for rendering legal documents with hierarchical clause numbering and dynamic mentions.
+
+## Features
+
+- Hierarchical clause numbering
+  - Top-level clauses use numerical numbering (1, 2, 3...)
+  - Nested clauses use alphabetical numbering (a, b, c...)
+  - Maintains proper numbering regardless of nesting depth or intermediate elements
+- Dynamic mentions system
+  - Mentions are identified by their `id` attribute
+  - Updating one mention updates all instances with the same ID throughout the document
+  - Customizable colors for different mention types
+- Clean typography and layout
+  - Helvetica-based font stack
+  - Proper spacing and indentation
+  - White-space preservation in paragraphs and headers
 
 ## Available Scripts
 
@@ -8,39 +23,71 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in interactive watch mode.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for production to the `build` folder.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The viewer takes a JSON document structure and renders it with proper formatting and numbering:
 
-### `npm run eject`
+$typescript
+interface JsonElement {
+    type?: 'block' | 'clause' | 'mention' | 'h1' | 'h4' | 'p' | 'li' | 'ul' | 'lic';
+    children?: JsonElement[];
+    color?: string;
+    bold?: boolean;
+    underline?: boolean;
+    text?: string;
+    title?: string;
+    id?: string;
+    value?: string;
+}
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<ServiceAgreementViewer element={documentJson} />
+$
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Example Document Structure
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+$json
+{
+  "type": "block",
+  "children": [
+    {
+      "type": "clause",
+      "children": [
+        {
+          "type": "p",
+          "children": [
+            {
+              "text": "Main clause text"
+            }
+          ]
+        },
+        {
+          "type": "clause",
+          "children": [
+            {
+              "type": "p",
+              "children": [
+                {
+                  "text": "Nested clause text"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+$
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
