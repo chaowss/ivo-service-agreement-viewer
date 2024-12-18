@@ -1,0 +1,81 @@
+h1 {
+    font-size: 3rem;
+    margin: 1.5rem 0;
+    color: #333;
+}
+
+h4 {
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    color: #444;
+    white-space: pre-wrap;
+}
+
+ul {
+    margin: 0.75rem 0;
+    padding-left: 2rem;
+    line-height: 1.5rem;
+}
+
+li {
+    margin: 0.5rem 0;
+    line-height: 1.1;
+}
+
+.mention {
+    padding: 4px 4px;
+    color: white;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.mention:hover {
+    opacity: 0.9;
+}
+/* Reset counters at the root level */
+.document-root {
+    counter-reset: clause;
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Style for top-level clauses */
+.clause:not(.clause *) {
+    counter-increment: clause;
+    counter-reset: subclause;
+    position: relative;
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+.clause:not(.clause *)::before {
+    content: counter(clause) ". ";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Style for nested clauses (any clause that's a descendant of another clause) */
+.clause .clause {
+    counter-increment: subclause;
+    position: relative;
+    padding-left: 2rem;
+    margin: 1rem 0;
+}
+
+.clause .clause::before {
+    content: counter(subclause, lower-alpha) ") ";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.p {
+    display: inline;
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+.block {
+    margin: 1rem 0;
+}
