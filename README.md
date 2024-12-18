@@ -29,6 +29,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Launches the test runner in interactive watch mode.
 
+Tests included are generated, and will fail, they are just there as an example.
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.
@@ -37,7 +39,7 @@ Builds the app for production to the `build` folder.
 
 The viewer takes a JSON document structure and renders it with proper formatting and numbering:
 
-$typescript
+```typescript
 interface JsonElement {
     type?: 'block' | 'clause' | 'mention' | 'h1' | 'h4' | 'p' | 'li' | 'ul' | 'lic';
     children?: JsonElement[];
@@ -51,11 +53,11 @@ interface JsonElement {
 }
 
 <ServiceAgreementViewer element={documentJson} />
-$
+```
 
 ## Example Document Structure
 
-$json
+```json
 {
   "type": "block",
   "children": [
@@ -87,6 +89,6 @@ $json
     }
   ]
 }
-$
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
