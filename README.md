@@ -20,6 +20,9 @@ A React component for rendering legal documents with hierarchical clause numberi
 
 In the project directory, you can run:
 
+### `npm install`
+for the dependencies
+
 ### `npm start`
 
 Runs the app in development mode.\
